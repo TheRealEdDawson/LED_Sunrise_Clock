@@ -58,7 +58,8 @@ def main():
         #red, green, blue
 
         while (True):
-            userDefinedPixel = raw_input('Pixel? (1-31)')
+            userDefinedPixel = raw_input('Pixel? 1-31 (x to exit): ')
+            if (userDefinedPixel=='x'): break
             userDefinedPixelInt = int(userDefinedPixel)
             if (userDefinedPixelInt > 31):
                 print ('Pixel out of range.')
@@ -66,7 +67,7 @@ def main():
             elif (userDefinedPixelInt < 1):
                 print ('Pixel out of range.')
                 break
-            userDefinedColour = raw_input('Colour? (red, green, blue)')
+            userDefinedColour = raw_input('Colour? (clear, red, green, blue, random/r)')
             if (userDefinedColour == 'red'):
                 print 'Attempting to set pixel to: ', userDefinedPixelInt, ' and red value to: ', userPalette[0][0], ' and green value to', userPalette[0][1], ' and blue value to', userPalette[0][2]
                 userRed = userPalette[0][0]
@@ -80,6 +81,15 @@ def main():
                 userRed = userPalette[2][0]
                 userGreen = userPalette[2][1]
                 userBlue = userPalette[2][2]
+            elif (userDefinedColour=='clear'):
+                userRed = 0
+                userGreen = 0
+                userBlue = 0
+            elif (userDefinedColour=='random' or userDefinedColour=='r'):
+                userRed = random.randint(0,127)
+                userGreen = random.randint(0,127)
+                userBlue = random.randint(0,127)
+                print 'Random colour -- Red:',userRed,' Green:',userGreen,' Blue:',userBlue
             else:
                 print 'Colour not found'
 
