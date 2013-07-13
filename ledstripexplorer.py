@@ -1,0 +1,93 @@
+#!/usr/bin/python
+
+# A fully sick ghetto "Sunrise Alarm Clock Light" made with Raspberry Pi and LED Strip lighting.
+# Based on the example code provided on this page: http://julioterra.com/journal/2013/02/raspberry-pi-and-led-strips-new-python-library/
+# You will need this "ledstrip" Python library to run this code: https://github.com/labatrockwell/raspberrypi-experiments/tree/ledstrip_v0.0.2
+ 
+from ledStrip import ledstrip
+import time
+import random 
+import argparse
+
+# Define app description and optional paramerters
+parser = argparse.ArgumentParser(description='Example sketch that controls an LED strip via Spacesb. It uses the 	LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
+
+# Define the leds strip length optional parameter
+parser.add_argument('-l', '--leds', '--pixels', 
+					nargs=1, type=int, default=32,
+					help='length of led strip in leds, or pixels')
+
+# read all command line parameters
+args = parser.parse_args()
+
+# function that initializes all the things
+def main():
+
+	# initialize spi and leds objects
+	spidev		= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
+	leds 		= ledstrip.LEDStrip(pixels=args.leds, spi=spidev)
+
+	pixel_edge = 0 	# current pixel whose state will be flipped
+	turn_on = False  # holds whether pixel will be switched on or off
+
+        red_value = 127
+        green_value = 127
+        blue_value = 0
+
+        # Blank out the strip to begin. 
+        for each in range(32):
+           leds.setPixelColorRGB(pixel=each, red=0, green=0, blue=0)
+           leds.show() 
+        
+        # Blink one light to show boot-up success
+        for each in range(1):
+            leds.setPixelColorRGB(pixel=1, red=127, green=0, blue=0)
+            leds.show()
+            time.sleep(1)
+            leds.setPixelColorRGB(pixel=1, red=0, green=0, blue=0)
+            leds.show()
+            time.sleep(1)
+
+        userDefinedPixel = 'blank'
+        userDefinedPixelInt = 0
+        userDefinedColour = 'blank'
+        userRed = 0
+        userGreen = 0
+        userBlue = 0
+        userPalette = [[127,0,0],[0,127,0],[0,0,127]] 
+        #red, green, blue
+
+        while (True):
+            userDefinedPixel = raw_input('Pixel? (1-31)')
+            userDefinedPixelInt = int(userDefinedPixel)
+            if (userDefinedPixelInt > 31):
+                print ('Pixel out of range.')
+                break
+            elif (userDefinedPixelInt < 1):
+                print ('Pixel out of range.')
+                break
+            userDefinedColour = raw_input('Colour? (red, green, blue)')
+            if (userDefinedColour == 'red'):
+                print 'Attempting to set pixel to: ', userDefinedPixelInt, ' and red value to: ', userPalette[0][0], ' and green value to', userPalette[0][1], ' and blue value to', userPalette[0][2]
+                userRed = userPalette[0][0]
+                userGreen = userPalette[0][1]
+                userBlue = userPalette[0][2]
+            elif (userDefinedColour == 'green'):
+                userRed = userPalette[1][0]
+                userGreen = userPalette[1][1]
+                userBlue = userPalette[1][2]
+            elif (userDefinedColour == 'blue'):
+                userRed = userPalette[2][0]
+                userGreen = userPalette[2][1]
+                userBlue = userPalette[2][2]
+            else:
+                print 'Colour not found'
+
+            leds.setPixelColorRGB(pixel=userDefinedPixelInt, red=userRed, green=userGreen, blue=userBlue)
+            leds.show()
+            
+            # delay for 1 seconds
+	    time.sleep(1)
+
+if __name__ == "__main__":
+	main()
