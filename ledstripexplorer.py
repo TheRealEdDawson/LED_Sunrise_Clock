@@ -8,6 +8,7 @@ from ledStrip import ledstrip
 import time
 import random 
 import argparse
+import re
 
 # Define app description and optional paramerters
 parser = argparse.ArgumentParser(description='Example sketch that controls an LED strip via Spacesb. It uses the 	LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
@@ -54,17 +55,20 @@ def main():
         userRed = 0
         userGreen = 0
         userBlue = 0
-        userPalette = [[127,0,0],[0,127,0],[0,0,127]] 
-        #red, green, blue
+        userPalette = [[127,0,0],[0,127,0],[0,0,127],[124,51,1],[37,8,92],[78,61,75]] 
+        #red, green, blue, yellow, purple, orange
 
         while (True):
-            userDefinedPixel = raw_input('Pixel? 1-31 (x to exit): ')
+            userDefinedPixel = raw_input('Pixel? 0-31 (a for all, x to exit): ')
             if (userDefinedPixel=='x'): break
-            userDefinedPixelInt = int(userDefinedPixel)
+            if not re.search('\d+', userDefinedPixel):
+                pass #print 'No numbers in command'
+            else: 
+                userDefinedPixelInt  = int(userDefinedPixel)
             if (userDefinedPixelInt > 31):
                 print ('Pixel out of range.')
                 break
-            elif (userDefinedPixelInt < 1):
+            elif (userDefinedPixelInt < 0):
                 print ('Pixel out of range.')
                 break
             userDefinedColour = raw_input('Colour? (clear, red, green, blue, random/r)')
@@ -81,6 +85,18 @@ def main():
                 userRed = userPalette[2][0]
                 userGreen = userPalette[2][1]
                 userBlue = userPalette[2][2]
+            elif (userDefinedColour == 'yellow'):
+                userRed = userPalette[3][0]
+                userGreen = userPalette[3][1]
+                userBlue = userPalette[3][2]
+            elif (userDefinedColour == 'purple'):
+                userRed = userPalette[4][0]
+                userGreen = userPalette[4][1]
+                userBlue = userPalette[4][2]    
+            elif (userDefinedColour == 'orange'):
+                userRed = userPalette[5][0]
+                userGreen = userPalette[5][1]
+                userBlue = userPalette[5][2]
             elif (userDefinedColour=='clear'):
                 userRed = 0
                 userGreen = 0
@@ -94,6 +110,9 @@ def main():
                 print 'Colour not found'
 
             leds.setPixelColorRGB(pixel=userDefinedPixelInt, red=userRed, green=userGreen, blue=userBlue)
+            if (userDefinedPixel =='all' or userDefinedPixel =='a'):
+                for each in range(32):
+                    leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
             leds.show()
             
             # delay for 1 seconds
