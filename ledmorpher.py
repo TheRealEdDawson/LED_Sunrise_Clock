@@ -74,7 +74,12 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    print "Returning values:"
    print "userDefinedColour: ", userDefinedColour
    print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
-   return userDefinedColour # userRed, userGreen, userBlue
+   morphList = []
+   morphList[0] = userDefinedColour
+   morphList[1] = userRed
+   morphList[2] = userGreen
+   morphList[3] = userBlue
+   return morphList[] # userRed, userGreen, userBlue
 
 # function that initializes all the things
 def main():
@@ -130,7 +135,7 @@ def main():
                 pass # 'No numbers in command'
             # Capturing the user's choice of colours
             print "Choose a starting colour."
-            morphStartColour[] = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
+            morphStartColour[] = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
             print "Choose an ending colour."
             userDefinedColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
             #morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
@@ -153,7 +158,6 @@ def main():
                 leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
             print "Lighting up with the following values."
             print "morphStartColour:"
-            print morphStartColour[]
             print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3], " ", morphStartColour[4]
             #print "morphEndColour:"
             #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3], " ", morphEndColour[4]
