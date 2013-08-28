@@ -74,10 +74,7 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    print "Returning values:"
    print "userDefinedColour: ", userDefinedColour
    print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
-   return userDefinedColour
-   return userRed
-   return userGreen
-   return userBlue
+   return userDefinedColour, userRed, userGreen, userBlue
 
 # function that initializes all the things
 def main():
@@ -112,13 +109,14 @@ def main():
         userDefinedPixelInt = 0
         userDefinedColour = 'blank'
         userDefinedCommand = 'blank'
-        morphStartColour = 'blank'
-        morphEndColour = 'blank'
+        morphStartColour = []
+        morphEndColour = []
         userRed = 0
         userGreen = 0
         userBlue = 0
         userPalette = [[127,0,0],[0,127,0],[0,0,127],[124,51,1],[37,8,92],[83,46,0],[127,127,127],[127,7,29]] 
         #red, green, blue, yellow, purple, orange, white, pink
+        
 
         while (True):
             userDefinedCommand = raw_input('Command? (m to morph, x to exit): ')
@@ -132,11 +130,9 @@ def main():
                 pass # 'No numbers in command'
             # Capturing the user's choice of colours
             print "Choose a starting colour."
-            choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
-            morphStartColour = 'blank'
+            morphStartColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
             print "Choose an ending colour."
-            choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
-            morphEndColour = 'blank'
+            morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
             #
             #startColour = []
             #startcolour = [127,0,0]
@@ -154,9 +150,14 @@ def main():
             # Setting entire range
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
-                print "Lighting up with the following values."
-                print "userDefinedColour: ", userDefinedColour
-                print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
+            print "Lighting up with the following values."
+            print "MorphStartColour:"
+            print morphStartColour [0], " ", morphStartColour [1], " ", morphStartColour [2], " ", morphStartColour [3], " ", morphStartColour [4]
+            print "MorphEndColour:"
+            print morphEndColour [0], " ", morphEndColour [1], " ", morphEndColour [2], " ", morphEndColour [3], " ", morphEndColour [4]
+            
+            print "userDefinedColour: ", userDefinedColour
+            print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
             leds.show()
             print "We should have made the light do something there."
             
