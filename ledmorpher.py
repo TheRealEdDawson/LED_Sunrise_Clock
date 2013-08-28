@@ -151,11 +151,10 @@ def main():
             # Calculate range of values between old and new r,g,b
             #
             # Setting entire range
-            if (userDefinedPixel =='all' or userDefinedPixel =='a'):
-                for each in range(32):
-                    leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
+            for each in range(32):
+                leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
             leds.show()
-
+            
             # Capturing current colour values to morph to
             oldUserRed = userRed
             oldUserGreen = userGreen
