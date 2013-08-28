@@ -74,7 +74,7 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    print "Returning values:"
    print "userDefinedColour: ", userDefinedColour
    print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
-   return userDefinedColour, userRed, userGreen, userBlue
+   return userDefinedColour # userRed, userGreen, userBlue
 
 # function that initializes all the things
 def main():
@@ -132,7 +132,8 @@ def main():
             print "Choose a starting colour."
             morphStartColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
             print "Choose an ending colour."
-            morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
+            userDefinedColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
+            #morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
             #
             #startColour = []
             #startcolour = [127,0,0]
@@ -151,10 +152,10 @@ def main():
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
             print "Lighting up with the following values."
-            print "MorphStartColour:"
-            print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3], " ", morphStartColour[4]
-            print "MorphEndColour:"
-            print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3], " ", morphEndColour[4]
+            #print "MorphStartColour:"
+            #print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3], " ", morphStartColour[4]
+            #print "MorphEndColour:"
+            #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3], " ", morphEndColour[4]
             
             print "userDefinedColour: ", userDefinedColour
             print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
