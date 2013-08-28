@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 # A fully sick ghetto "Sunrise Alarm Clock Light" made with Raspberry Pi and LED Strip lighting.
+# It uses the LED Strip Python library for Adafruit\'s LPD8806 LED strips.
+# http://www.adafruit.com/products/306
 # You will need this "ledstrip" Python library to run this code: 
 # https://github.com/labatrockwell/raspberrypi-experiments/tree/ledstrip_v0.0.2
 # Based on the library example code provided on this page: 
@@ -12,8 +14,8 @@ import random
 import argparse
 import re
 
-# Define app description and optional paramerters
-parser = argparse.ArgumentParser(description='A "Sunrise Alarm Clock Light" made with Raspberry Pi. It uses the LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
+# Define app description and optional parameters
+parser = argparse.ArgumentParser(description='A "Sunrise Alarm Clock Light" made with Raspberry Pi.')
 
 # Define the leds strip length optional parameter
 parser.add_argument('-l', '--leds', '--pixels', 
@@ -69,8 +71,8 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
        print 'Random colour -- Red:',userRed,' Green:',userGreen,' Blue:',userBlue
    else:
        print 'Colour not found'
-   print "Returning:"
-   print "userDefinedColour ", userDefinedColour, " userRed", userRed, " userGreen", userGreen, " userBlue", userBlue
+   print "Returning values:"
+   print "userDefinedColour: ", userDefinedColour, " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
    return userDefinedColour
    return userRed
    return userGreen
@@ -108,6 +110,7 @@ def main():
         userDefinedPixel = 'all'
         userDefinedPixelInt = 0
         userDefinedColour = 'blank'
+        userDefinedCommand = 'blank'
         morphStartColour = 'blank'
         morphEndColour = 'blank'
         userRed = 0
@@ -117,14 +120,14 @@ def main():
         #red, green, blue, yellow, purple, orange, white, pink
 
         while (True):
-            userDefinedPixel = raw_input('Command? (m to morph, x to exit): ')
-            if (userDefinedPixel=='x'): break
-            if (userDefinedPixel=='m'): 
+            userDefinedCommand = raw_input('Command? (m to morph, x to exit): ')
+            if (userDefinedCommand=='x'): break
+            if (userDefinedCommand=='m'): 
                 print "Morphing."
             else:
             	print "Couldn't understand your command."
             	break
-            if not re.search('\d+', userDefinedPixel):
+            if not re.search('\d+', userDefinedCommand):
                 pass # 'No numbers in command'
             # Capturing the user's choice of colours
             print "Choose a starting colour."
@@ -133,7 +136,7 @@ def main():
             print "Choose an ending colour."
             choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
             morphEndColour = 'blank'
-            
+            #
             #startColour = []
             #startcolour = [127,0,0]
             #print "startColour: ", startColour[]
@@ -146,11 +149,7 @@ def main():
             #    redRange[each] = each
             #print "redRange = ", redRange
             # Calculate range of values between old and new r,g,b
-            
-            
-            
-            # Setting single pixel           
-            #leds.setPixelColorRGB(pixel=userDefinedPixelInt, red=userRed, green=userGreen, blue=userBlue)
+            #
             # Setting entire range
             if (userDefinedPixel =='all' or userDefinedPixel =='a'):
                 for each in range(32):
