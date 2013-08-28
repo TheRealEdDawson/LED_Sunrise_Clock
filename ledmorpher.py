@@ -1,9 +1,11 @@
 #!/usr/bin/python
 
 # A fully sick ghetto "Sunrise Alarm Clock Light" made with Raspberry Pi and LED Strip lighting.
-# Based on the example code provided on this page: http://julioterra.com/journal/2013/02/raspberry-pi-and-led-strips-new-python-library/
-# You will need this "ledstrip" Python library to run this code: https://github.com/labatrockwell/raspberrypi-experiments/tree/ledstrip_v0.0.2
- 
+# You will need this "ledstrip" Python library to run this code: 
+# https://github.com/labatrockwell/raspberrypi-experiments/tree/ledstrip_v0.0.2
+# Based on the library example code provided on this page: 
+# http://julioterra.com/journal/2013/02/raspberry-pi-and-led-strips-new-python-library/
+
 from ledStrip import ledstrip
 import time
 import random 
@@ -11,7 +13,7 @@ import argparse
 import re
 
 # Define app description and optional paramerters
-parser = argparse.ArgumentParser(description='Example sketch that controls an LED strip via Spacesb. It uses the 	LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
+parser = argparse.ArgumentParser(description='A "Sunrise Alarm Clock Light" made with Raspberry Pi. It uses the LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
 
 # Define the leds strip length optional parameter
 parser.add_argument('-l', '--leds', '--pixels', 
@@ -21,9 +23,62 @@ parser.add_argument('-l', '--leds', '--pixels',
 # read all command line parameters
 args = parser.parse_args()
 
+# Function for taking user's input on colour choices.
+def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue):
+   userDefinedColour = raw_input('Colour? (clear, yellow, orange, red, purple, blue, green, white, pink, random/r): ')
+   if (userDefinedColour == 'red'):
+       userRed = userPalette[0][0]
+       userGreen = userPalette[0][1]
+       userBlue = userPalette[0][2]
+   elif (userDefinedColour == 'green'):
+       userRed = userPalette[1][0]
+       userGreen = userPalette[1][1]
+       userBlue = userPalette[1][2]
+   elif (userDefinedColour == 'blue'):
+       userRed = userPalette[2][0]
+       userGreen = userPalette[2][1]
+       userBlue = userPalette[2][2]
+   elif (userDefinedColour == 'yellow'):
+       userRed = userPalette[3][0]
+       userGreen = userPalette[3][1]
+       userBlue = userPalette[3][2]
+   elif (userDefinedColour == 'purple'):
+       userRed = userPalette[4][0]
+       userGreen = userPalette[4][1]
+       userBlue = userPalette[4][2]    
+   elif (userDefinedColour == 'orange'):
+       userRed = userPalette[5][0]
+       userGreen = userPalette[5][1]
+       userBlue = userPalette[5][2]
+   elif (userDefinedColour == 'white'):
+       userRed = userPalette[6][0]
+       userGreen = userPalette[6][1]
+       userBlue = userPalette[6][2]
+   elif (userDefinedColour == 'pink'):
+       userRed = userPalette[7][0]
+       userGreen = userPalette[7][1]
+       userBlue = userPalette[7][2]                 
+   elif (userDefinedColour == 'clear'):
+       userRed = 0
+       userGreen = 0
+       userBlue = 0
+   elif (userDefinedColour=='random' or userDefinedColour=='r'):
+       userRed = random.randint(0,127)
+       userGreen = random.randint(0,127)
+       userBlue = random.randint(0,127)
+       print 'Random colour -- Red:',userRed,' Green:',userGreen,' Blue:',userBlue
+   else:
+       print 'Colour not found'
+   print "Returning:"
+   print "userDefinedColour ", userDefinedColour, " userRed", userRed, " userGreen", userGreen, " userBlue", userBlue
+   return userDefinedColour
+   return userRed
+   return userGreen
+   return userBlue
+
 # function that initializes all the things
 def main():
-
+	
 	# initialize spi and leds objects
 	spidev		= file("/dev/spidev0.0", "wb")  # ref to spi connection to the led bar
 	leds 		= ledstrip.LEDStrip(pixels=args.leds, spi=spidev)
@@ -50,9 +105,11 @@ def main():
             time.sleep(1)
 
         #Defining a bunch of variables for colour transitions
-        userDefinedPixel = 'blank'
+        userDefinedPixel = 'all'
         userDefinedPixelInt = 0
         userDefinedColour = 'blank'
+        morphStartColour = 'blank'
+        morphEndColour = 'blank'
         userRed = 0
         userGreen = 0
         userBlue = 0
@@ -60,74 +117,34 @@ def main():
         #red, green, blue, yellow, purple, orange, white, pink
 
         while (True):
-            userDefinedPixel = raw_input('Command? (a to animate, x to exit): ')
+            userDefinedPixel = raw_input('Command? (m to morph, x to exit): ')
             if (userDefinedPixel=='x'): break
+            if (userDefinedPixel=='m'): 
+                print "Morphing."
+            else:
+            	print "Couldn't understand your command."
+            	break
             if not re.search('\d+', userDefinedPixel):
                 pass # 'No numbers in command'
-            else: 
-                userDefinedPixelInt  = int(userDefinedPixel)
-            if (userDefinedPixelInt > 31):
-                print ('Pixel out of range.')
-                break
-            elif (userDefinedPixelInt < 0):
-                print ('Pixel out of range.')
-                break
-            userDefinedColour = raw_input('Colour? (clear, yellow, orange, red, purple, blue, green, white, pink, random/r): ')
-            if (userDefinedColour == 'red'):
-                userRed = userPalette[0][0]
-                userGreen = userPalette[0][1]
-                userBlue = userPalette[0][2]
-            elif (userDefinedColour == 'green'):
-                userRed = userPalette[1][0]
-                userGreen = userPalette[1][1]
-                userBlue = userPalette[1][2]
-            elif (userDefinedColour == 'blue'):
-                userRed = userPalette[2][0]
-                userGreen = userPalette[2][1]
-                userBlue = userPalette[2][2]
-            elif (userDefinedColour == 'yellow'):
-                userRed = userPalette[3][0]
-                userGreen = userPalette[3][1]
-                userBlue = userPalette[3][2]
-            elif (userDefinedColour == 'purple'):
-                userRed = userPalette[4][0]
-                userGreen = userPalette[4][1]
-                userBlue = userPalette[4][2]    
-            elif (userDefinedColour == 'orange'):
-                userRed = userPalette[5][0]
-                userGreen = userPalette[5][1]
-                userBlue = userPalette[5][2]
-            elif (userDefinedColour == 'white'):
-                userRed = userPalette[6][0]
-                userGreen = userPalette[6][1]
-                userBlue = userPalette[6][2]
-            elif (userDefinedColour == 'pink'):
-                userRed = userPalette[7][0]
-                userGreen = userPalette[7][1]
-                userBlue = userPalette[7][2]                 
-            elif (userDefinedColour == 'clear'):
-                userRed = 0
-                userGreen = 0
-                userBlue = 0
-            elif (userDefinedColour=='random' or userDefinedColour=='r'):
-                userRed = random.randint(0,127)
-                userGreen = random.randint(0,127)
-                userBlue = random.randint(0,127)
-                print 'Random colour -- Red:',userRed,' Green:',userGreen,' Blue:',userBlue
-            else:
-                print 'Colour not found'
+            # Capturing the user's choice of colours
+            print "Choose a starting colour."
+            choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
+            morphStartColour = 'blank'
+            print "Choose an ending colour."
+            choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
+            morphEndColour = 'blank'
             
-            startColour = []
-            startcolour = [127,0,0]
-            print "startColour: ", startColour[]
-            endColour = []
-            endColour = [0,127,0]
-            print "endColour: ", endColour[]
+            #startColour = []
+            #startcolour = [127,0,0]
+            #print "startColour: ", startColour[]
+            #endColour = []
+            #endColour = [0,127,0]
+            #print "endColour: ", endColour[]
             #Calculating midpoint between old and new colours
-            redRange = []
-            for each in range(startColour[0], endColour[0]):
-                redRange[each] = each
-            print "redRange = ", redRange
+            #redRange = []
+            #for each in range(startColour[0], endColour[0]):
+            #    redRange[each] = each
+            #print "redRange = ", redRange
             # Calculate range of values between old and new r,g,b
             
             
