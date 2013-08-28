@@ -96,7 +96,7 @@ def main():
         # Blank out the strip to begin. 
         for each in range(32):
            leds.setPixelColorRGB(pixel=each, red=0, green=0, blue=0)
-           leds.show() 
+        leds.show() 
         
         # Blink one light to show boot-up success
         for each in range(1):
@@ -154,8 +154,11 @@ def main():
             # Setting entire range
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
-                leds.show()
-                print "We should have made the light do something there."
+                print "Lighting up with the following values."
+                print "userDefinedColour: ", userDefinedColour
+                print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
+            leds.show()
+            print "We should have made the light do something there."
             
             # Capturing current colour values to morph to
             oldUserRed = userRed
