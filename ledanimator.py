@@ -49,7 +49,7 @@ def main():
             leds.show()
             time.sleep(1)
 
-        #Defining a bunch of variables for 
+        #Defining a bunch of variables for colour transitions
         userDefinedPixel = 'blank'
         userDefinedPixelInt = 0
         userDefinedColour = 'blank'
@@ -74,7 +74,6 @@ def main():
                 break
             userDefinedColour = raw_input('Colour? (clear, yellow, orange, red, purple, blue, green, white, pink, random/r): ')
             if (userDefinedColour == 'red'):
-                #print 'Attempting to set pixel to: ', userDefinedPixelInt, ' and red value to: ', userPalette[0][0], ' and green value to', userPalette[0][1], ' and blue value to', userPalette[0][2]
                 userRed = userPalette[0][0]
                 userGreen = userPalette[0][1]
                 userBlue = userPalette[0][2]
@@ -117,8 +116,19 @@ def main():
                 print 'Random colour -- Red:',userRed,' Green:',userGreen,' Blue:',userBlue
             else:
                 print 'Colour not found'
+                        
             
+            startColour = []
+            startcolour = [127,0,0]
+            print "startColour: ", startColour[]
+            endColour = []
+            endColour = [0,127,0]
+            print "endColour: ", endColour[]
             #Calculating midpoint between old and new colours
+            redRange = []
+            for each in range(startColour[0], endColour[0]):
+                redRange[each] = each
+            print "redRange = ", redRange
             # Calculate range of values between old and new r,g,b
             
             

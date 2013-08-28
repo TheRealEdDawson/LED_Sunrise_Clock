@@ -50,7 +50,7 @@ def main():
            leds.show() 
         
         # Blink one light to show boot-up success
-        for each in range(5):
+        for each in range(2):
             leds.setPixelColorRGB(pixel=1, red=127, green=127, blue=127)
             leds.show()
             time.sleep(1)

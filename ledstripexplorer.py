@@ -55,8 +55,8 @@ def main():
         userRed = 0
         userGreen = 0
         userBlue = 0
-        userPalette = [[127,0,0],[0,127,0],[0,0,127],[124,51,1],[37,8,92],[78,61,75]] 
-        #red, green, blue, yellow, purple, orange
+        userPalette = [[127,0,0],[0,127,0],[0,0,127],[124,51,1],[37,8,92],[83,46,0],[127,127,127],[127,7,29]] 
+        #red, green, blue, yellow, purple, orange, white, pink
 
         while (True):
             userDefinedPixel = raw_input('Pixel? 0-31 (a for all, x to exit): ')
@@ -71,9 +71,9 @@ def main():
             elif (userDefinedPixelInt < 0):
                 print ('Pixel out of range.')
                 break
-            userDefinedColour = raw_input('Colour? (clear, red, green, blue, random/r)')
+            userDefinedColour = raw_input('Colour? (clear, yellow, orange, red, purple, blue, green, white, pink, random/r): ')
             if (userDefinedColour == 'red'):
-                print 'Attempting to set pixel to: ', userDefinedPixelInt, ' and red value to: ', userPalette[0][0], ' and green value to', userPalette[0][1], ' and blue value to', userPalette[0][2]
+                #print 'Attempting to set pixel to: ', userDefinedPixelInt, ' and red value to: ', userPalette[0][0], ' and green value to', userPalette[0][1], ' and blue value to', userPalette[0][2]
                 userRed = userPalette[0][0]
                 userGreen = userPalette[0][1]
                 userBlue = userPalette[0][2]
@@ -97,7 +97,15 @@ def main():
                 userRed = userPalette[5][0]
                 userGreen = userPalette[5][1]
                 userBlue = userPalette[5][2]
-            elif (userDefinedColour=='clear'):
+            elif (userDefinedColour == 'white'):
+                userRed = userPalette[6][0]
+                userGreen = userPalette[6][1]
+                userBlue = userPalette[6][2]
+            elif (userDefinedColour == 'pink'):
+                userRed = userPalette[7][0]
+                userGreen = userPalette[7][1]
+                userBlue = userPalette[7][2]                 
+            elif (userDefinedColour == 'clear'):
                 userRed = 0
                 userGreen = 0
                 userBlue = 0
