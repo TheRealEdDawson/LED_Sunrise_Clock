@@ -72,7 +72,8 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    else:
        print 'Colour not found'
    print "Returning values:"
-   print "userDefinedColour: ", userDefinedColour, " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
+   print "userDefinedColour: ", userDefinedColour
+   print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
    return userDefinedColour
    return userRed
    return userGreen
@@ -99,7 +100,7 @@ def main():
         
         # Blink one light to show boot-up success
         for each in range(1):
-            leds.setPixelColorRGB(pixel=1, red=127, green=0, blue=0)
+            leds.setPixelColorRGB(pixel=1, red=0, green=127, blue=0)
             leds.show()
             time.sleep(1)
             leds.setPixelColorRGB(pixel=1, red=0, green=0, blue=0)
