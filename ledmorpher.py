@@ -79,7 +79,7 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    morphList[1] = userRed
    morphList[2] = userGreen
    morphList[3] = userBlue
-   return morphList[] # userRed, userGreen, userBlue
+   return morphList # userDefinedColour, userRed, userGreen, userBlue
 
 # function that initializes all the things
 def main():
@@ -135,7 +135,7 @@ def main():
                 pass # 'No numbers in command'
             # Capturing the user's choice of colours
             print "Choose a starting colour."
-            morphStartColour[] = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
+            morphStartColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
             print "Choose an ending colour."
             userDefinedColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
             #morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
