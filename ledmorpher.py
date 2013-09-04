@@ -155,13 +155,22 @@ def main():
             print "Morphing from ", morphStartColour[0], " to ", morphEndColour[0]
             
             print "Calculating red range: "
-            stepValue = morphStartColour[1] - morphEndColour[1]
+            if morphStartColour[1] > morphEndColour[1]:
+                stepValue = morphStartColour[1] - morphEndColour[1]
+            elif morphEndColour[1] > morphStartColour[1]:
+                stepValue = morphEndColour[1] - morphStartColour[1]
             print "Red step value is: ", stepValue
             print "Calculating green range: "
-            stepValue = morphStartColour[2] - morphEndColour[2]
+            if morphStartColour[2] > morphEndColour[2]:
+                stepValue = morphStartColour[2] - morphEndColour[2]
+            elif morphEndColour[2] > morphStartColour[2]:
+                stepValue = morphEndColour[2] - morphStartColour[2]
             print "Green step value is: ", stepValue
             print "Calculating blue range: "
-            stepValue = morphStartColour[3] - morphEndColour[3]
+            if morphStartColour[3] > morphEndColour[3]:
+                stepValue = morphStartColour[3] - morphEndColour[3]
+            elif morphEndColour[1] > morphStartColour[1]:
+                stepValue = morphEndColour[1] - morphStartColour[1]
             print "Blue step value is: ", stepValue
             #print "morphStartColour:"
             #print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
