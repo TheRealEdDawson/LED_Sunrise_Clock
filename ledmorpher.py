@@ -162,7 +162,7 @@ def main():
                 leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
             print "Lighting up with the following values."
             print "morphStartColour:"
-            print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3], " ", morphStartColour[4]
+            print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
             #print "morphEndColour:"
             #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3], " ", morphEndColour[4]
             
