@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# A fully sick ghetto "Sunrise Alarm Clock Light" made with Raspberry Pi and LED Strip lighting.
+# Raspberry Pi and LED Strip lighting -- morphs between any two colours.
 # It uses the LED Strip Python library for Adafruit\'s LPD8806 LED strips.
 # http://www.adafruit.com/products/306
 # You will need this "ledstrip" Python library to run this code: 
@@ -15,7 +15,7 @@ import argparse
 import re
 
 # Define app description and optional parameters
-parser = argparse.ArgumentParser(description='A "Sunrise Alarm Clock Light" made with Raspberry Pi.')
+parser = argparse.ArgumentParser(description='A "LED Strip Light Show" made with Raspberry Pi.')
 
 # Define the leds strip length optional parameter
 parser.add_argument('-l', '--leds', '--pixels', 
@@ -116,6 +116,7 @@ def main():
         userDefinedCommand = 'blank'
         morphStartColour = []
         morphEndColour = []
+        morphRange = []
         userRed = 0
         userGreen = 0
         userBlue = 0
@@ -142,41 +143,31 @@ def main():
             morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
             print "Printing the returned values:"
             for i in morphEndColour: print i
-            #morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
-            #
-            #startColour = []
-            #startcolour = [127,0,0]
-            #print "startColour: ", startColour[]
-            #endColour = []
-            #endColour = [0,127,0]
-            #print "endColour: ", endColour[]
+            
             #Calculating midpoint between old and new colours
             #redRange = []
             #for each in range(startColour[0], endColour[0]):
             #    redRange[each] = each
             #print "redRange = ", redRange
             # Calculate range of values between old and new r,g,b
+            
+            print "Morphing from ", morphStartColour[0], " to ", morphEndColour[0]
+            #print "morphStartColour:"
+            #print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
             #
-            print "Lighting up with the following values."
-            print "morphStartColour:"
-            print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
             # Setting entire range
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
             leds.show()
             time.sleep(1)
-            #print "morphEndColour:"
-            #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3], " ", morphEndColour[4]
-            print "Lighting up with the following values."
-            print "morphEndColour:" 
-            print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3]
+            #print "morphEndColour:" 
+            #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3]
             # Setting entire range
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphEndColour[1], green=morphEndColour[2], blue=morphEndColour[3])
             leds.show()
             time.sleep(1)
-            print "We should have made the light do something there."
-            # delay for 1 seconds
+            # delay for 1 second
 	    time.sleep(0.1)
 
 if __name__ == "__main__":
