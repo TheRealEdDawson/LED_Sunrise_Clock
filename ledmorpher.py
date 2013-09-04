@@ -139,9 +139,9 @@ def main():
             print "Printing the returned values:"
             for i in morphStartColour: print i
             print "Choose an ending colour."
-            userDefinedColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
+            morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
             print "Printing the returned values:"
-            for i in userDefinedColour: print i
+            for i in morphEndColour: print i
             #morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)                
             #
             #startColour = []
@@ -157,25 +157,25 @@ def main():
             #print "redRange = ", redRange
             # Calculate range of values between old and new r,g,b
             #
-            # Setting entire range
-            for each in range(32):
-                leds.setPixelColorRGB(pixel=each, red=userRed, green=userGreen, blue=userBlue)
             print "Lighting up with the following values."
             print "morphStartColour:"
             print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
+            # Setting entire range
+            for each in range(32):
+                leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
+            leds.show()
+            time.sleep(1)
             #print "morphEndColour:"
             #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3], " ", morphEndColour[4]
-            
-            print "userDefinedColour: ", userDefinedColour
-            print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
+            print "Lighting up with the following values."
+            print "morphEndColour:" 
+            print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3]
+            # Setting entire range
+            for each in range(32):
+                leds.setPixelColorRGB(pixel=each, red=morphEndColour[1], green=morphEndColour[2], blue=morphEndColour[3])
             leds.show()
+            time.sleep(1)
             print "We should have made the light do something there."
-            
-            # Capturing current colour values to morph to
-            oldUserRed = userRed
-            oldUserGreen = userGreen
-            oldUserBlue = userBlue
-            
             # delay for 1 seconds
 	    time.sleep(0.1)
 
