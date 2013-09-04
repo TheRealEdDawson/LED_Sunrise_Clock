@@ -117,7 +117,7 @@ def main():
         morphStartColour = []
         morphEndColour = []
         morphRange = []
-        stepValue
+        stepValue = 0
         userRed = 0
         userGreen = 0
         userBlue = 0
