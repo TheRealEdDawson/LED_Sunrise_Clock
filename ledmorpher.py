@@ -71,9 +71,9 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
        print 'Random colour -- Red:',userRed,' Green:',userGreen,' Blue:',userBlue
    else:
        print 'Colour not found'
-   print "Returning values:"
-   print "userDefinedColour: ", userDefinedColour
-   print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
+   #print "Returning values:"
+   #print "userDefinedColour: ", userDefinedColour
+   #print " userRed:", userRed, " userGreen:", userGreen, " userBlue:", userBlue
    morphList = []
    morphList.append(userDefinedColour)
    morphList.append(userRed)
@@ -100,7 +100,7 @@ def main():
            leds.setPixelColorRGB(pixel=each, red=0, green=0, blue=0)
         leds.show() 
         
-        # Blink one light to show boot-up success
+        # Blink one green light to show boot-up success
         for each in range(1):
             leds.setPixelColorRGB(pixel=1, red=0, green=127, blue=0)
             leds.show()
@@ -117,6 +117,7 @@ def main():
         morphStartColour = []
         morphEndColour = []
         morphRange = []
+        stepValue
         userRed = 0
         userGreen = 0
         userBlue = 0
@@ -152,6 +153,16 @@ def main():
             # Calculate range of values between old and new r,g,b
             
             print "Morphing from ", morphStartColour[0], " to ", morphEndColour[0]
+            
+            print "Calculating red range: "
+            stepValue = morphStartColour[1] - morphEndColour[1]
+            print "Red step value is: ", stepValue
+            print "Calculating green range: "
+            stepValue = morphStartColour[2] - morphEndColour[2]
+            print "Green step value is: ", stepValue
+            print "Calculating blue range: "
+            stepValue = morphStartColour[3] - morphEndColour[3]
+            print "Blue step value is: ", stepValue
             #print "morphStartColour:"
             #print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
             #
