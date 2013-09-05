@@ -208,15 +208,15 @@ def main():
             for i in range (1,8):
                 if redPolarity == 1:
                     morphTransitionColour[1] = (morphStartColour[1] + redStepValue)
-                elif redPolarity == 0:
+                if redPolarity == 0:
                     morphTransitionColour[1] = (morphEndColour[1] - redStepValue)
                 if greenPolarity == 1:
                     morphTransitionColour[2] = (morphStartColour[2] + greenStepValue)
-                elif greenPolarity == 0:
+                if greenPolarity == 0:
                     morphTransitionColour[2] = (morphEndColour[2] - greenStepValue)
                 if bluePolarity == 1:
                     morphTransitionColour[3] = (morphStartColour[3] + blueStepValue)
-                elif bluePolarity == 0:
+                if bluePolarity == 0:
                     morphTransitionColour[3] = (morphEndColour[3] - blueStepValue)
                 print "%d, %d, %d" % (morphTransitionColour[1], morphTransitionColour[2], morphTransitionColour[3])
                 for each in range(32):
