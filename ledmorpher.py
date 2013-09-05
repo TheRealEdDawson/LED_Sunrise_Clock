@@ -193,15 +193,15 @@ def main():
             time.sleep(0.1)
             # Iterating through morph values 2-8 (of 10)
             for i in range (1,8):
-                if redPolarity = 1:
+                if redPolarity == 1:
                     morphStartColour[1] = (morphStartColour[1] + redStepValue)
                 elif:
                     morphStartColour[1] = (morphStartColour[1] - redStepValue)
-                if greenPolarity = 1:
+                if greenPolarity == 1:
                     morphStartColour[2] = (morphStartColour[2] + greenStepValue)
                 elif:
                     morphStartColour[2] = (morphStartColour[2] - greenStepValue)
-                if bluePolarity = 1:
+                if bluePolarity == 1:
                     morphStartColour[3] = (morphStartColour[3] + blueStepValue)
                 elif:
                     morphStartColour[3] = (morphStartColour[3] - blueStepValue)
