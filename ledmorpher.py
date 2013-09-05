@@ -193,9 +193,18 @@ def main():
             time.sleep(0.1)
             # Iterating through morph values 2-8 (of 10)
             for i in range (1,8):
-                morphStartColour[1] = (morphStartColour[1] + redStepValue)
-                morphStartColour[2] = (morphStartColour[2] + greenStepValue)
-                morphStartColour[3] = (morphStartColour[3] + blueStepValue)
+                if redPolarity = 1:
+                    morphStartColour[1] = (morphStartColour[1] + redStepValue)
+                elif:
+                    morphStartColour[1] = (morphStartColour[1] - redStepValue)
+                if greenPolarity = 1:
+                    morphStartColour[2] = (morphStartColour[2] + greenStepValue)
+                elif:
+                    morphStartColour[2] = (morphStartColour[2] - greenStepValue)
+                if bluePolarity = 1:
+                    morphStartColour[3] = (morphStartColour[3] + blueStepValue)
+                elif:
+                    morphStartColour[3] = (morphStartColour[3] - blueStepValue)
                 for each in range(32):
                     leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
                     leds.show()
