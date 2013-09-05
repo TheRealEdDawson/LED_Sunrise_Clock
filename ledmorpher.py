@@ -158,7 +158,7 @@ def main():
                 redRange = morphEndColour[1] - morphStartColour[1]
             redStepValue = redRange / 8
             print "Red range value is: ", redRange
-            print "Step value is: ", RedStepValue
+            print "Step value is: ", redStepValue
             print "Calculating green range: "
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
