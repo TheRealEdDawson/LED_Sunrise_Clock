@@ -195,15 +195,15 @@ def main():
             for i in range (1,8):
                 if redPolarity == 1:
                     morphStartColour[1] = (morphStartColour[1] + redStepValue)
-                elif:
+                elif redPolarity == 0:
                     morphStartColour[1] = (morphStartColour[1] - redStepValue)
                 if greenPolarity == 1:
                     morphStartColour[2] = (morphStartColour[2] + greenStepValue)
-                elif:
+                elif greenPolarity == 0:
                     morphStartColour[2] = (morphStartColour[2] - greenStepValue)
                 if bluePolarity == 1:
                     morphStartColour[3] = (morphStartColour[3] + blueStepValue)
-                elif:
+                elif bluePolarity == 0:
                     morphStartColour[3] = (morphStartColour[3] - blueStepValue)
                 for each in range(32):
                     leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
