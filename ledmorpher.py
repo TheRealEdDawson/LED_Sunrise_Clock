@@ -117,6 +117,9 @@ def main():
         morphStartColour = []
         morphEndColour = []
         morphRange = []
+        redRange = 0
+        greenRange = 0
+        blueRange = 0
         stepValue = 0
         userRed = 0
         userGreen = 0
@@ -156,22 +159,28 @@ def main():
             
             print "Calculating red range: "
             if morphStartColour[1] > morphEndColour[1]:
-                stepValue = morphStartColour[1] - morphEndColour[1]
+                redRange = morphStartColour[1] - morphEndColour[1]
             elif morphEndColour[1] > morphStartColour[1]:
-                stepValue = morphEndColour[1] - morphStartColour[1]
-            print "Red step value is: ", stepValue
+                redRange = morphEndColour[1] - morphStartColour[1]
+            stepValue = redRange / 8
+            print "Red range value is: ", redRange
+            print "Step value is: ", stepValue
             print "Calculating green range: "
             if morphStartColour[2] > morphEndColour[2]:
-                stepValue = morphStartColour[2] - morphEndColour[2]
+                greenRange = morphStartColour[2] - morphEndColour[2]
             elif morphEndColour[2] > morphStartColour[2]:
-                stepValue = morphEndColour[2] - morphStartColour[2]
-            print "Green step value is: ", stepValue
+                greenRange = morphEndColour[2] - morphStartColour[2]
+            stepValue = greenRange / 8
+            print "Green range value is: ", greenRange
+            print "Step value is: ", stepValue
             print "Calculating blue range: "
             if morphStartColour[3] > morphEndColour[3]:
-                stepValue = morphStartColour[3] - morphEndColour[3]
+                blueRange = morphStartColour[3] - morphEndColour[3]
             elif morphEndColour[1] > morphStartColour[1]:
-                stepValue = morphEndColour[1] - morphStartColour[1]
-            print "Blue step value is: ", stepValue
+                blueRange = morphEndColour[1] - morphStartColour[1]
+            stepValue = blueRange / 8
+            print "Blue range value is: ", blueRange
+            print "Step value is: ", stepValue
             #print "morphStartColour:"
             #print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
             #
