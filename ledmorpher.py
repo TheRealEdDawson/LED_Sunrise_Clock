@@ -59,7 +59,11 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    elif (userDefinedColour == 'pink'):
        userRed = userPalette[7][0]
        userGreen = userPalette[7][1]
-       userBlue = userPalette[7][2]                 
+       userBlue = userPalette[7][2]
+   elif (userDefinedColour == 'lightblue'):
+       userRed = userPalette[8][0]
+       userGreen = userPalette[8][1]
+       userBlue = userPalette[8][2]                        
    elif (userDefinedColour == 'clear'):
        userRed = 0
        userGreen = 0
@@ -129,7 +133,7 @@ def main():
         userRed = 0
         userGreen = 0
         userBlue = 0
-        userPalette = [[127,0,0],[0,127,0],[0,0,127],[124,51,1],[37,8,92],[83,46,0],[127,127,127],[127,7,29]] 
+        userPalette = [[127,0,0],[0,127,0],[0,0,127],[105,50,17],[37,8,92],[83,46,0],[127,127,127],[127,7,29],[10,26,68]] 
         #red, green, blue, yellow, purple, orange, white, pink
 
         while (True):
