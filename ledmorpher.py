@@ -163,7 +163,8 @@ def main():
                 redPolarity = 0
             redStepValue = redRange / 8
             print "Red range value is: ", redRange
-            print "Step value is: ", redStepValue
+            print "Red Step value is: ", redStepValue
+            print "Red polarity is: ", redPolarity
             print "Calculating green range: "
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
@@ -173,7 +174,8 @@ def main():
                 greenPolarity = 0
             greenStepValue = greenRange / 8
             print "Green range value is: ", greenRange
-            print "Step value is: ", greenStepValue
+            print "Green Step value is: ", greenStepValue
+            print "Green polarity is: ", greenPolarity
             print "Calculating blue range: "
             if morphStartColour[3] > morphEndColour[3]:
                 blueRange = morphStartColour[3] - morphEndColour[3]
@@ -183,8 +185,8 @@ def main():
                 bluePolarity = 0
             blueStepValue = blueRange / 8
             print "Blue range value is: ", blueRange
-            print "Step value is: ", blueStepValue
-            
+            print "Blue Step value is: ", blueStepValue
+            print "Blue polarity is: ", bluePolarity
             # Morphing
             # Showing initial colour
             for each in range(32):
@@ -197,15 +199,15 @@ def main():
                 if redPolarity == 1:
                     morphStartColour[1] = (morphStartColour[1] + redStepValue)
                 elif redPolarity == 0:
-                    morphStartColour[1] = (morphStartColour[1] - redStepValue)
+                    morphStartColour[1] = (morphEndColour[1] - redStepValue)
                 if greenPolarity == 1:
                     morphStartColour[2] = (morphStartColour[2] + greenStepValue)
                 elif greenPolarity == 0:
-                    morphStartColour[2] = (morphStartColour[2] - greenStepValue)
+                    morphStartColour[2] = (morphEndColour[2] - greenStepValue)
                 if bluePolarity == 1:
                     morphStartColour[3] = (morphStartColour[3] + blueStepValue)
                 elif bluePolarity == 0:
-                    morphStartColour[3] = (morphStartColour[3] - blueStepValue)
+                    morphStartColour[3] = (morphEndColour[3] - blueStepValue)
                 print "%d, %d, %d" % (morphStartColour[1], morphStartColour[2], morphStartColour[3])
                 for each in range(32):
                     leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
