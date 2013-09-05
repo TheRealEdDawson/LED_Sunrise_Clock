@@ -145,14 +145,14 @@ def main():
             # Capturing the user's choice of colours
             print "Choose a starting colour."
             morphStartColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
-            print "Printing the returned values:"
-            for i in morphStartColour: print i
+            #print "Printing the returned values:"
+            #for i in morphStartColour: print i
             print "Choose an ending colour."
             morphEndColour = choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue)
-            print "Printing the returned values:"
-            for i in morphEndColour: print i
+            #print "Printing the returned values:"
+            #for i in morphEndColour: print i
             
-            print "Morphing from ", morphStartColour[0], " to ", morphEndColour[0]
+            print "Morphing from", morphStartColour[0], "to", morphEndColour[0]
             
             print "Calculating red range: "
             if morphStartColour[1] > morphEndColour[1]:
@@ -190,6 +190,7 @@ def main():
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
             leds.show()
+            print "%d, %d, %d" % (morphStartColour[1], morphStartColour[2], morphStartColour[3])
             time.sleep(0.1)
             # Iterating through morph values 2-8 (of 10)
             for i in range (1,8):
@@ -205,6 +206,7 @@ def main():
                     morphStartColour[3] = (morphStartColour[3] + blueStepValue)
                 elif bluePolarity == 0:
                     morphStartColour[3] = (morphStartColour[3] - blueStepValue)
+                print "%d, %d, %d" % (morphStartColour[1], morphStartColour[2], morphStartColour[3])
                 for each in range(32):
                     leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
                     leds.show()
@@ -213,6 +215,7 @@ def main():
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphEndColour[1], green=morphEndColour[2], blue=morphEndColour[3])
             leds.show()
+            print "%d, %d, %d" % (morphEndColour[1], morphEndColour[2], morphEndColour[3])
             time.sleep(0.1)
             
             # delay for 1 second
