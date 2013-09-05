@@ -156,6 +156,8 @@ def main():
             print "Morphing from", morphStartColour[0], "to", morphEndColour[0]
             
             print "Calculating red range: "
+            if morphStartColour[1] == 0: morphStartColour[1] = 1 #Calculations require nonzero
+            if morphEndColour[1] == 0: morphEndColour[1] = 1 #Calculations require nonzero
             if morphStartColour[1] > morphEndColour[1]:
                 redRange = morphStartColour[1] - morphEndColour[1]
                 redPolarity = 1
@@ -167,6 +169,8 @@ def main():
             print "Red Step value is: ", redStepValue
             print "Red polarity is: ", redPolarity
             print "Calculating green range: "
+            if morphStartColour[2] == 0: morphStartColour[2] = 1 #Calculations require nonzero
+            if morphEndColour[2] == 0: morphEndColour[2] = 1 #Calculations require nonzero
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
                 greenPolarity = 1
@@ -178,6 +182,8 @@ def main():
             print "Green Step value is: ", greenStepValue
             print "Green polarity is: ", greenPolarity
             print "Calculating blue range: "
+            if morphStartColour[3] == 0: morphStartColour[3] = 1 #Calculations require nonzero
+            if morphEndColour[3] == 0: morphEndColour[3] = 1 #Calculations require nonzero
             if morphStartColour[3] > morphEndColour[3]:
                 blueRange = morphStartColour[3] - morphEndColour[3]
                 bluePolarity = 1
