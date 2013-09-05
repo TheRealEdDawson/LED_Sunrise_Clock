@@ -118,15 +118,16 @@ def main():
         morphEndColour = []
         morphRange = []
         redRange = 0
+        redStepValue = 0
         greenRange = 0
+        greenStepValue = 0
         blueRange = 0
-        stepValue = 0
+        blueStepValue = 0
         userRed = 0
         userGreen = 0
         userBlue = 0
         userPalette = [[127,0,0],[0,127,0],[0,0,127],[124,51,1],[37,8,92],[83,46,0],[127,127,127],[127,7,29]] 
         #red, green, blue, yellow, purple, orange, white, pink
-        
 
         while (True):
             userDefinedCommand = raw_input('Command? (m to morph, x to exit): ')
@@ -148,13 +149,6 @@ def main():
             print "Printing the returned values:"
             for i in morphEndColour: print i
             
-            #Calculating midpoint between old and new colours
-            #redRange = []
-            #for each in range(startColour[0], endColour[0]):
-            #    redRange[each] = each
-            #print "redRange = ", redRange
-            # Calculate range of values between old and new r,g,b
-            
             print "Morphing from ", morphStartColour[0], " to ", morphEndColour[0]
             
             print "Calculating red range: "
@@ -162,42 +156,49 @@ def main():
                 redRange = morphStartColour[1] - morphEndColour[1]
             elif morphEndColour[1] > morphStartColour[1]:
                 redRange = morphEndColour[1] - morphStartColour[1]
-            stepValue = redRange / 8
+            redStepValue = redRange / 8
             print "Red range value is: ", redRange
-            print "Step value is: ", stepValue
+            print "Step value is: ", RedStepValue
             print "Calculating green range: "
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
             elif morphEndColour[2] > morphStartColour[2]:
                 greenRange = morphEndColour[2] - morphStartColour[2]
-            stepValue = greenRange / 8
+            greenStepValue = greenRange / 8
             print "Green range value is: ", greenRange
-            print "Step value is: ", stepValue
+            print "Step value is: ", greenStepValue
             print "Calculating blue range: "
             if morphStartColour[3] > morphEndColour[3]:
                 blueRange = morphStartColour[3] - morphEndColour[3]
             elif morphEndColour[1] > morphStartColour[1]:
                 blueRange = morphEndColour[1] - morphStartColour[1]
-            stepValue = blueRange / 8
+            blueStepValue = blueRange / 8
             print "Blue range value is: ", blueRange
-            print "Step value is: ", stepValue
-            #print "morphStartColour:"
-            #print morphStartColour[0], " ", morphStartColour[1], " ", morphStartColour[2], " ", morphStartColour[3]
-            #
-            # Setting entire range
+            print "Step value is: ", blueStepValue
+            
+            # Morphing
+            # Showing initial colour
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
             leds.show()
-            time.sleep(1)
-            #print "morphEndColour:" 
-            #print morphEndColour[0], " ", morphEndColour[1], " ", morphEndColour[2], " ", morphEndColour[3]
-            # Setting entire range
+            time.sleep(0.1)
+            # Iterating through morph values 2-8 (of 10)
+            for i in range (1,8):
+                morphStartColour[1] = (morphStartColour[1] + redStepValue)
+                morphStartColour[2] = (morphStartColour[2] + greenStepValue)
+                morphStartColour[3] = (morphStartColour[3] + blueStepValue)
+                for each in range(32):
+                    leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
+                    leds.show()
+                time.sleep(0.1)
+            # Setting end colour
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphEndColour[1], green=morphEndColour[2], blue=morphEndColour[3])
             leds.show()
-            time.sleep(1)
+            time.sleep(0.1)
+            
             # delay for 1 second
-	    time.sleep(0.1)
+	    #time.sleep(0.1)
 
 if __name__ == "__main__":
 	main()
