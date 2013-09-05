@@ -161,7 +161,7 @@ def main():
             if morphStartColour[1] > morphEndColour[1]:
                 redRange = morphStartColour[1] - morphEndColour[1]
                 redPolarity = 0
-            elif morphStartColour[1] < morphEndColour[1]:
+            if morphStartColour[1] < morphEndColour[1]:
                 redRange = morphEndColour[1] - morphStartColour[1]
                 redPolarity = 1
             redStepValue = redRange / 8
@@ -174,7 +174,7 @@ def main():
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
                 greenPolarity = 0
-            elif morphStartColour[2] < morphEndColour[2]:
+            if morphStartColour[2] < morphEndColour[2]:
                 greenRange = morphEndColour[2] - morphStartColour[2]
                 greenPolarity = 1
             greenStepValue = greenRange / 8
@@ -187,7 +187,7 @@ def main():
             if morphStartColour[3] > morphEndColour[3]:
                 blueRange = morphStartColour[3] - morphEndColour[3]
                 bluePolarity = 0
-            elif morphStartColour[3] < morphEndColour[3]:
+            if morphStartColour[3] < morphEndColour[3]:
                 blueRange = morphEndColour[3] - morphStartColour[3]
                 bluePolarity = 1
             blueStepValue = blueRange / 8
@@ -210,14 +210,17 @@ def main():
                     morphTransitionColour[1] = (morphStartColour[1] + redStepValue)
                 if redPolarity == 0:
                     morphTransitionColour[1] = (morphEndColour[1] - redStepValue)
+                    print "Subtracted %d from %d" % (morphEndColour[1], redStepValue)
                 if greenPolarity == 1:
                     morphTransitionColour[2] = (morphStartColour[2] + greenStepValue)
                 if greenPolarity == 0:
                     morphTransitionColour[2] = (morphEndColour[2] - greenStepValue)
+                    print "Subtracted %d from %d" % (morphEndColour[2], greenStepValue)
                 if bluePolarity == 1:
                     morphTransitionColour[3] = (morphStartColour[3] + blueStepValue)
                 if bluePolarity == 0:
                     morphTransitionColour[3] = (morphEndColour[3] - blueStepValue)
+                    print "Subtracted %d from %d" % (morphEndColour[3], blueStepValue)
                 print "%d, %d, %d" % (morphTransitionColour[1], morphTransitionColour[2], morphTransitionColour[3])
                 for each in range(32):
                     leds.setPixelColorRGB(pixel=each, red=morphTransitionColour[1], green=morphTransitionColour[2], blue=morphTransitionColour[3])
