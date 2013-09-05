@@ -210,17 +210,17 @@ def main():
                     morphTransitionColour[1] = (morphStartColour[1] + redStepValue)
                 if redPolarity == 0:
                     morphTransitionColour[1] = (morphStartColour[1] - redStepValue)
-                    print "Subtracted %d from %d" % (redStepValue, morphEndColour[1])
+                    print "Subtracted %d from %d" % (redStepValue, morphStartColour[1])
                 if greenPolarity == 1:
                     morphTransitionColour[2] = (morphStartColour[2] + greenStepValue)
                 if greenPolarity == 0:
                     morphTransitionColour[2] = (morphStartColour[2] - greenStepValue)
-                    print "Subtracted %d from %d" % (greenStepValue, morphEndColour[2])
+                    print "Subtracted %d from %d" % (greenStepValue, morphStartColour[2])
                 if bluePolarity == 1:
                     morphTransitionColour[3] = (morphStartColour[3] + blueStepValue)
                 if bluePolarity == 0:
                     morphTransitionColour[3] = (morphStartColour[3] - blueStepValue)
-                    print "Subtracted %d from %d" % (blueStepValue, morphEndColour[3])
+                    print "Subtracted %d from %d" % (blueStepValue, morphStartColour[3])
                 print "%d, %d, %d" % (morphTransitionColour[1], morphTransitionColour[2], morphTransitionColour[3])
                 for each in range(32):
                     leds.setPixelColorRGB(pixel=each, red=morphTransitionColour[1], green=morphTransitionColour[2], blue=morphTransitionColour[3])
