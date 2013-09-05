@@ -116,6 +116,7 @@ def main():
         userDefinedCommand = 'blank'
         morphStartColour = []
         morphEndColour = []
+        morphTransitionColour = []
         morphRange = []
         redRange = 0
         redStepValue = 0
@@ -187,6 +188,9 @@ def main():
             print "Blue range value is: ", blueRange
             print "Blue Step value is: ", blueStepValue
             print "Blue polarity is: ", bluePolarity
+            
+            morphTransitionColour = morphStartColour
+            
             # Morphing
             # Showing initial colour
             for each in range(32):
@@ -197,20 +201,20 @@ def main():
             # Iterating through morph values 2-8 (of 10)
             for i in range (1,8):
                 if redPolarity == 1:
-                    morphStartColour[1] = (morphStartColour[1] + redStepValue)
+                    morphTransitionColour[1] = (morphStartColour[1] + redStepValue)
                 elif redPolarity == 0:
-                    morphStartColour[1] = (morphEndColour[1] - redStepValue)
+                    morphTransitionColour[1] = (morphEndColour[1] - redStepValue)
                 if greenPolarity == 1:
-                    morphStartColour[2] = (morphStartColour[2] + greenStepValue)
+                    morphTransitionColour[2] = (morphStartColour[2] + greenStepValue)
                 elif greenPolarity == 0:
-                    morphStartColour[2] = (morphEndColour[2] - greenStepValue)
+                    morphTransitionColour[2] = (morphEndColour[2] - greenStepValue)
                 if bluePolarity == 1:
-                    morphStartColour[3] = (morphStartColour[3] + blueStepValue)
+                    morphTransitionColour[3] = (morphStartColour[3] + blueStepValue)
                 elif bluePolarity == 0:
-                    morphStartColour[3] = (morphEndColour[3] - blueStepValue)
-                print "%d, %d, %d" % (morphStartColour[1], morphStartColour[2], morphStartColour[3])
+                    morphTransitionColour[3] = (morphEndColour[3] - blueStepValue)
+                print "%d, %d, %d" % (morphTransitionColour[1], morphTransitionColour[2], morphTransitionColour[3])
                 for each in range(32):
-                    leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
+                    leds.setPixelColorRGB(pixel=each, red=morphTransitionColour[1], green=morphTransitionColour[2], blue=morphTransitionColour[3])
                     leds.show()
                 time.sleep(0.1)
             # Setting end colour
