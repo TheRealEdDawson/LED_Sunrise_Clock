@@ -154,6 +154,13 @@ def main():
             #for i in morphEndColour: print i
             
             print "Morphing from", morphStartColour[0], "to", morphEndColour[0]
+            # Blanking old variables from the last colour set
+            redStepValue = 0
+            redRange = 0
+            greenStepValue = 0
+            greenRange = 0
+            blueStepValue = 0
+            blueRange = 0
             
             print "Calculating red range: "
             if morphStartColour[1] == 0: morphStartColour[1] = 1 #Calculations require nonzero
