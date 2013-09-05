@@ -160,10 +160,10 @@ def main():
             if morphEndColour[1] == 0: morphEndColour[1] = 1 #Calculations require nonzero
             if morphStartColour[1] > morphEndColour[1]:
                 redRange = morphStartColour[1] - morphEndColour[1]
-                redPolarity = 1
+                redPolarity = 0
             elif morphStartColour[1] < morphEndColour[1]:
                 redRange = morphEndColour[1] - morphStartColour[1]
-                redPolarity = 0
+                redPolarity = 1
             redStepValue = redRange / 8
             print "Red range value is: ", redRange
             print "Red Step value is: ", redStepValue
@@ -173,10 +173,10 @@ def main():
             if morphEndColour[2] == 0: morphEndColour[2] = 1 #Calculations require nonzero
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
-                greenPolarity = 1
+                greenPolarity = 0
             elif morphStartColour[2] < morphEndColour[2]:
                 greenRange = morphEndColour[2] - morphStartColour[2]
-                greenPolarity = 0
+                greenPolarity = 1
             greenStepValue = greenRange / 8
             print "Green range value is: ", greenRange
             print "Green Step value is: ", greenStepValue
@@ -186,10 +186,10 @@ def main():
             if morphEndColour[3] == 0: morphEndColour[3] = 1 #Calculations require nonzero
             if morphStartColour[3] > morphEndColour[3]:
                 blueRange = morphStartColour[3] - morphEndColour[3]
-                bluePolarity = 1
+                bluePolarity = 0
             elif morphStartColour[3] < morphEndColour[3]:
                 blueRange = morphEndColour[3] - morphStartColour[3]
-                bluePolarity = 0
+                bluePolarity = 1
             blueStepValue = blueRange / 8
             print "Blue range value is: ", blueRange
             print "Blue Step value is: ", blueStepValue
