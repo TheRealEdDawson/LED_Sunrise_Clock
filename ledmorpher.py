@@ -119,10 +119,13 @@ def main():
         morphRange = []
         redRange = 0
         redStepValue = 0
+        redPolarity = 0
         greenRange = 0
         greenStepValue = 0
+        greenPolarity = 0
         blueRange = 0
         blueStepValue = 0
+        bluePolarity = 0
         userRed = 0
         userGreen = 0
         userBlue = 0
@@ -154,24 +157,30 @@ def main():
             print "Calculating red range: "
             if morphStartColour[1] > morphEndColour[1]:
                 redRange = morphStartColour[1] - morphEndColour[1]
-            elif morphEndColour[1] > morphStartColour[1]:
+                redPolarity = 1
+            elif morphStartColour[1] < morphEndColour[1]:
                 redRange = morphEndColour[1] - morphStartColour[1]
+                redPolarity = 0
             redStepValue = redRange / 8
             print "Red range value is: ", redRange
             print "Step value is: ", redStepValue
             print "Calculating green range: "
             if morphStartColour[2] > morphEndColour[2]:
                 greenRange = morphStartColour[2] - morphEndColour[2]
-            elif morphEndColour[2] > morphStartColour[2]:
+                greenPolarity = 1
+            elif morphStartColour[2] < morphEndColour[2]:
                 greenRange = morphEndColour[2] - morphStartColour[2]
+                greenPolarity = 0
             greenStepValue = greenRange / 8
             print "Green range value is: ", greenRange
             print "Step value is: ", greenStepValue
             print "Calculating blue range: "
             if morphStartColour[3] > morphEndColour[3]:
                 blueRange = morphStartColour[3] - morphEndColour[3]
-            elif morphEndColour[1] > morphStartColour[1]:
-                blueRange = morphEndColour[1] - morphStartColour[1]
+                bluePolarity = 1
+            elif morphStartColour[3] < morphEndColour[3]:
+                blueRange = morphEndColour[3] - morphStartColour[3]
+                bluePolarity = 0
             blueStepValue = blueRange / 8
             print "Blue range value is: ", blueRange
             print "Step value is: ", blueStepValue
