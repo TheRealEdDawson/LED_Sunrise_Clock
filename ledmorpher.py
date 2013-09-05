@@ -174,6 +174,9 @@ def main():
             redStepValue = redRange / 8
             print "Red range value is: ", redRange
             print "Red Step value is: ", redStepValue
+            if redStepValue < 8:
+            	redStepValue = 1
+            	print "Corrected to 1."
             print "Red polarity is: ", redPolarity
             print "Calculating green range: "
             if morphStartColour[2] == 0: morphStartColour[2] = 1 #Calculations require nonzero
@@ -187,6 +190,9 @@ def main():
             greenStepValue = greenRange / 8
             print "Green range value is: ", greenRange
             print "Green Step value is: ", greenStepValue
+            if greenStepValue < 8:
+            	greenStepValue = 1
+            	print "Corrected to 1."
             print "Green polarity is: ", greenPolarity
             print "Calculating blue range: "
             if morphStartColour[3] == 0: morphStartColour[3] = 1 #Calculations require nonzero
@@ -200,6 +206,9 @@ def main():
             blueStepValue = blueRange / 8
             print "Blue range value is: ", blueRange
             print "Blue Step value is: ", blueStepValue
+            if blueStepValue < 8:
+            	blueStepValue = 1
+            	print "Corrected to 1."
             print "Blue polarity is: ", bluePolarity
             
             morphTransitionColour = morphStartColour
