@@ -27,7 +27,7 @@ args = parser.parse_args()
 
 # Function for taking user's input on colour choices.
 def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue):
-   userDefinedColour = raw_input('Colour? (clear, yellow, orange, red, purple, blue, green, white, pink, random/r): ')
+   userDefinedColour = raw_input('Colour? (clear, yellow, orange, red, purple, blue, lightblue, green, lightgreen, white, pink, random/r): ')
    if (userDefinedColour == 'red'):
        userRed = userPalette[0][0]
        userGreen = userPalette[0][1]
@@ -64,6 +64,10 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
        userRed = userPalette[8][0]
        userGreen = userPalette[8][1]
        userBlue = userPalette[8][2]                        
+   elif (userDefinedColour == 'lightgreen'):
+       userRed = userPalette[9][0]
+       userGreen = userPalette[9][1]
+       userBlue = userPalette[9][2]
    elif (userDefinedColour == 'clear'):
        userRed = 0
        userGreen = 0
@@ -133,7 +137,7 @@ def main():
         userRed = 0
         userGreen = 0
         userBlue = 0
-        userPalette = [[127,0,0],[0,127,0],[0,0,127],[105,50,17],[37,8,92],[83,46,0],[127,127,127],[127,7,29],[10,26,68]] 
+        userPalette = [[127,0,0],[0,127,0],[0,0,127],[105,50,17],[37,8,92],[83,46,0],[127,127,127],[127,7,29],[10,26,68],[36,74,0]] 
         #red, green, blue, yellow, purple, orange, white, pink
 
         while (True):
