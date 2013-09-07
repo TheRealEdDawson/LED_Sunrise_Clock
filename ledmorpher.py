@@ -112,7 +112,7 @@ def colour_Calculator(morphStartColour, morphEndColour):
     colourList.append(colourStepValue)
     return colourList # colourRange, colourPolarity, colourStepValue
     
-def morph_sequence(morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue):
+def morph_sequence(leds, morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue):
     # Morphing
     # Showing initial colour
     for each in range(32):
@@ -255,7 +255,7 @@ def main():
             
             # Morphing
             if (userDefinedCommand=='m'):
-            	morph_sequence(morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue)
+            	morph_sequence(leds, morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue)
             
             """
             # Morphing
