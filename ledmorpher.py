@@ -261,7 +261,7 @@ def main():
             if (userDefinedCommand=='b'):
             	while (True):
             	    morphInterim = []
-            	    morph_sequence(leds, morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue)
+            	    morphTransitionColour = []
             	    morphInterim = morphEndColour
             	    morphEndColour = morphStartColour
             	    morphStartColour = morphInterim
@@ -289,6 +289,7 @@ def main():
                     bluePolarity = colourList[1]
                     blueStepValue = colourList[2]
                     morphTransitionColour = morphStartColour
+                    morph_sequence(leds, morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue)
             
 if __name__ == "__main__":
 	main()
