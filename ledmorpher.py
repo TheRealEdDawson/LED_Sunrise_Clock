@@ -104,14 +104,48 @@ def colour_Calculator(morphStartColour, morphEndColour):
     	colourPolarity = 0
     colourStepValue = colourRange / 8
     print "Colour range value is: ", colourRange
-    print "Colour Step value is: ", colourStepValue
+    print "Colour step value is: ", colourStepValue
     print "Colour polarity is: ", colourPolarity
     colourList = []
     colourList.append(colourRange)
     colourList.append(colourPolarity)
     colourList.append(colourStepValue)
     return colourList # colourRange, colourPolarity, colourStepValue
-
+    
+def morph_sequence(morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue):
+    # Morphing
+    # Showing initial colour
+    for each in range(32):
+        leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
+    leds.show()
+    print "%d, %d, %d" % (morphStartColour[1], morphStartColour[2], morphStartColour[3])
+    time.sleep(0.1)
+    # Iterating through morph values 2-8 (of 10)
+    for i in range (1,8):
+        if redPolarity == 1:
+            morphTransitionColour[1] = (morphStartColour[1] + redStepValue)
+        if redPolarity == 0:
+            morphTransitionColour[1] = (morphStartColour[1] - redStepValue)
+        if greenPolarity == 1:
+            morphTransitionColour[2] = (morphStartColour[2] + greenStepValue)
+        if greenPolarity == 0:
+            morphTransitionColour[2] = (morphStartColour[2] - greenStepValue)
+        if bluePolarity == 1:
+            morphTransitionColour[3] = (morphStartColour[3] + blueStepValue)
+        if bluePolarity == 0:
+            morphTransitionColour[3] = (morphStartColour[3] - blueStepValue)
+            print "%d, %d, %d" % (morphTransitionColour[1], morphTransitionColour[2], morphTransitionColour[3])
+        for each in range(32):
+            leds.setPixelColorRGB(pixel=each, red=morphTransitionColour[1], green=morphTransitionColour[2], blue=morphTransitionColour[3])
+        leds.show()
+        time.sleep(0.1)
+    # Setting end colour
+    for each in range(32):
+        leds.setPixelColorRGB(pixel=each, red=morphEndColour[1], green=morphEndColour[2], blue=morphEndColour[3])
+    leds.show()
+    print "%d, %d, %d" % (morphEndColour[1], morphEndColour[2], morphEndColour[3])
+    time.sleep(0.1)
+    return morphEndColour
 # function that initializes all the things
 def main():
 	
@@ -220,6 +254,11 @@ def main():
             morphTransitionColour = morphStartColour
             
             # Morphing
+            if (userDefinedCommand=='m'):
+            	morph_sequence(morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue)
+            
+            """
+            # Morphing
             # Showing initial colour
             for each in range(32):
                 leds.setPixelColorRGB(pixel=each, red=morphStartColour[1], green=morphStartColour[2], blue=morphStartColour[3])
@@ -254,9 +293,7 @@ def main():
             leds.show()
             print "%d, %d, %d" % (morphEndColour[1], morphEndColour[2], morphEndColour[3])
             time.sleep(0.1)
+            """
             
-            # delay for 1 second
-	    #time.sleep(0.1)
-
 if __name__ == "__main__":
 	main()
