@@ -259,6 +259,7 @@ def main():
             
             # Bouncing
             if (userDefinedCommand=='b'):
+            	morph_sequence(leds, morphStartColour, morphEndColour, morphTransitionColour, redPolarity, redStepValue, greenPolarity, greenStepValue, bluePolarity, blueStepValue)
             	while (True):
             	    morphInterim = []
             	    morphTransitionColour = []
