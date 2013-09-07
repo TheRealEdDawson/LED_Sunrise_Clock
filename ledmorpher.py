@@ -89,6 +89,26 @@ def choose_a_colour(userPalette, userDefinedColour, userRed, userGreen, userBlue
    morphList.append(userBlue)
    return morphList # userDefinedColour, userRed, userGreen, userBlue
 
+def colour_Calculator(morphStartColour, morphEndColour):
+    print "Calculating colour range: "
+    if morphStartColour == 0: morphStartColour = 1 #Calculations require nonzero
+    if morphEndColour == 0: morphEndColour = 1 #Calculations require nonzero
+    if morphStartColour > morphEndColour:
+        colourRange = morphStartColour - morphEndColour
+        colourPolarity = 0
+    if morphStartColour < morphEndColour:
+        colourRange = morphEndColour - morphStartColour
+        colourPolarity = 1
+    colourStepValue = colourRange / 8
+    print "Colour range value is: ", colourRange
+    print "Colour Step value is: ", colourStepValue
+    print "Colour polarity is: ", colourPolarity
+    colourList = []
+    colourList.append(colourRange)
+    colourList.append(colourPolarity)
+    colourList.append(colourStepValue)
+    return colourList # colourRange, colourPolarity, colourStepValue
+
 # function that initializes all the things
 def main():
 	
@@ -125,6 +145,7 @@ def main():
         morphStartColour = []
         morphEndColour = []
         morphTransitionColour = []
+        colourList = []
         redRange = 0
         redStepValue = 0
         redPolarity = 0
@@ -141,10 +162,12 @@ def main():
         #red, green, blue, yellow, purple, orange, white, pink
 
         while (True):
-            userDefinedCommand = raw_input('Command? (m to morph, x to exit): ')
+            userDefinedCommand = raw_input('Command? (m to morph, b to bounce, x to exit): ')
             if (userDefinedCommand=='x'): break
             if (userDefinedCommand=='m'): 
                 print "Morphing."
+            elif (userDefinedCommand=='b'): 
+                print "Bouncing."
             else:
             	print "Couldn't understand your command."
             	break
@@ -160,8 +183,12 @@ def main():
             #print "Printing the returned values:"
             #for i in morphEndColour: print i
             
-            print "Morphing from", morphStartColour[0], "to", morphEndColour[0]
+            if (userDefinedCommand=='m'):
+            	print "Morphing from", morphStartColour[0], "to", morphEndColour[0]
             
+            if (userDefinedCommand=='b'):
+            	print "Bouncing from", morphStartColour[0], "to", morphEndColour[0]
+            	
             # Blanking old variables from the last colour set
             redStepValue = 0
             redRange = 0
@@ -171,6 +198,13 @@ def main():
             blueRange = 0
             
             print "Calculating red range: "
+            colourList = colour_Calculator(morphStartColour[1], morphEndColour[1])
+            #colourRange, colourPolarity, colourStepValue
+            redRange = colourList[0]
+            redPolarity = colourList[1]
+            redStepValue = colourList[2]
+            
+            """
             if morphStartColour[1] == 0: morphStartColour[1] = 1 #Calculations require nonzero
             if morphEndColour[1] == 0: morphEndColour[1] = 1 #Calculations require nonzero
             if morphStartColour[1] > morphEndColour[1]:
@@ -182,10 +216,9 @@ def main():
             redStepValue = redRange / 8
             print "Red range value is: ", redRange
             print "Red Step value is: ", redStepValue
-            #if redStepValue < 8:
-            #	redStepValue = 1
-            #	print "Corrected to 1."
             print "Red polarity is: ", redPolarity
+            """
+            
             print "Calculating green range: "
             if morphStartColour[2] == 0: morphStartColour[2] = 1 #Calculations require nonzero
             if morphEndColour[2] == 0: morphEndColour[2] = 1 #Calculations require nonzero
@@ -198,9 +231,6 @@ def main():
             greenStepValue = greenRange / 8
             print "Green range value is: ", greenRange
             print "Green Step value is: ", greenStepValue
-            #if greenStepValue < 8:
-            #	greenStepValue = 1
-            #	print "Corrected to 1."
             print "Green polarity is: ", greenPolarity
             print "Calculating blue range: "
             if morphStartColour[3] == 0: morphStartColour[3] = 1 #Calculations require nonzero
