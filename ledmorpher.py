@@ -197,58 +197,23 @@ def main():
             blueStepValue = 0
             blueRange = 0
             
-            print "Calculating red range: "
+            # Running caclulations for the colour morph values
+            print "Red spectrum."
             colourList = colour_Calculator(morphStartColour[1], morphEndColour[1])
-            #colourRange, colourPolarity, colourStepValue
             redRange = colourList[0]
             redPolarity = colourList[1]
             redStepValue = colourList[2]
-            
-            """
-            if morphStartColour[1] == 0: morphStartColour[1] = 1 #Calculations require nonzero
-            if morphEndColour[1] == 0: morphEndColour[1] = 1 #Calculations require nonzero
-            if morphStartColour[1] > morphEndColour[1]:
-                redRange = morphStartColour[1] - morphEndColour[1]
-                redPolarity = 0
-            if morphStartColour[1] < morphEndColour[1]:
-                redRange = morphEndColour[1] - morphStartColour[1]
-                redPolarity = 1
-            redStepValue = redRange / 8
-            print "Red range value is: ", redRange
-            print "Red Step value is: ", redStepValue
-            print "Red polarity is: ", redPolarity
-            """
-            
-            print "Calculating green range: "
-            if morphStartColour[2] == 0: morphStartColour[2] = 1 #Calculations require nonzero
-            if morphEndColour[2] == 0: morphEndColour[2] = 1 #Calculations require nonzero
-            if morphStartColour[2] > morphEndColour[2]:
-                greenRange = morphStartColour[2] - morphEndColour[2]
-                greenPolarity = 0
-            if morphStartColour[2] < morphEndColour[2]:
-                greenRange = morphEndColour[2] - morphStartColour[2]
-                greenPolarity = 1
-            greenStepValue = greenRange / 8
-            print "Green range value is: ", greenRange
-            print "Green Step value is: ", greenStepValue
-            print "Green polarity is: ", greenPolarity
-            print "Calculating blue range: "
-            if morphStartColour[3] == 0: morphStartColour[3] = 1 #Calculations require nonzero
-            if morphEndColour[3] == 0: morphEndColour[3] = 1 #Calculations require nonzero
-            if morphStartColour[3] > morphEndColour[3]:
-                blueRange = morphStartColour[3] - morphEndColour[3]
-                bluePolarity = 0
-            if morphStartColour[3] < morphEndColour[3]:
-                blueRange = morphEndColour[3] - morphStartColour[3]
-                bluePolarity = 1
-            blueStepValue = blueRange / 8
-            print "Blue range value is: ", blueRange
-            print "Blue Step value is: ", blueStepValue
-            #if blueStepValue < 8:
-            #	blueStepValue = 1
-            #	print "Corrected to 1."
-            print "Blue polarity is: ", bluePolarity
-            
+            print "Green spectrum."
+            colourList = colour_Calculator(morphStartColour[2], morphEndColour[2])
+            greenRange = colourList[0]
+            greenPolarity = colourList[1]
+            greenStepValue = colourList[2]
+            print "Blue spectrum."
+            colourList = colour_Calculator(morphStartColour[3], morphEndColour[3])
+            blueRange = colourList[0]
+            bluePolarity = colourList[1]
+            blueStepValue = colourList[2]
+
             morphTransitionColour = morphStartColour
             
             # Morphing
