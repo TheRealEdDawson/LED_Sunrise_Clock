@@ -99,6 +99,8 @@ def colour_Calculator(morphStartColour, morphEndColour):
     if morphStartColour < morphEndColour:
         colourRange = morphEndColour - morphStartColour
         colourPolarity = 1
+    if morphStartColour == morphEndColour:
+    	colourRange = 0
     colourStepValue = colourRange / 8
     print "Colour range value is: ", colourRange
     print "Colour Step value is: ", colourStepValue
