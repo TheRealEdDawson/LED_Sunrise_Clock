@@ -1,8 +1,10 @@
 #!/usr/bin/python
 
 # A fully sick ghetto "Sunrise Alarm Clock Light" made with Raspberry Pi and LED Strip lighting.
-# Based on the example code provided on this page: http://julioterra.com/journal/2013/02/raspberry-pi-and-led-strips-new-python-library/
-# You will need this "ledstrip" Python library to run this code: https://github.com/labatrockwell/raspberrypi-experiments/tree/ledstrip_v0.0.2
+# Based on the example code provided on this page: 
+#     http://julioterra.com/journal/2013/02/raspberry-pi-and-led-strips-new-python-library/
+# You will need this "ledstrip" Python library to run this code: 
+#     https://github.com/labatrockwell/raspberrypi-experiments/tree/ledstrip_v0.0.2
  
 from ledStrip import ledstrip
 import time
@@ -10,7 +12,7 @@ import random
 import argparse
 
 # Define app description and optional paramerters
-parser = argparse.ArgumentParser(description='Example sketch that controls an LED strip via Spacesb. It uses the 	LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
+parser = argparse.ArgumentParser(description='Example sketch that controls an LED strip via Spacesb. It uses the LED Strip Python library for Adafruit\'s LPD8806 LED strips.')
 
 # Define the leds strip length optional parameter
 parser.add_argument('-l', '--leds', '--pixels', 
